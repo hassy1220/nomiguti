@@ -1,0 +1,22 @@
+<div>
+  <h1>ユーザーページ</h1>
+  <%= image_tag @user.get_profile_image(200,200) %>
+  <p>名前<%= @user.name %></p>
+  <p>自己紹介<%= @user.introduction %></p>
+  <% if @user.id == current_user.id %>
+    <%= link_to"編集",edit_user_path(@user.id) %>
+  <% end %>
+
+  <% @user.posts.each do |post| %>
+   <table>
+     <tr>
+       <td><%= post.title %></td>
+       <td><%= post.body %></td>
+       <td><%= post.field_area(post.area) %></td>
+       <% if post.user == current_user %>
+         <td><%= link_to"編集",edit_post_path(post.id) %></td>
+       <% end %>
+     </tr>
+   </table>
+  <% end %>
+</div>

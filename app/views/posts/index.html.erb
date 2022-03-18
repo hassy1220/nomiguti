@@ -1,0 +1,18 @@
+<div>
+  <h1>post index</h1>
+  <% @posts.each do |post| %>
+   <table>
+     <tr><td><%= image_tag post.user.get_profile_image(100,100) %></td></tr>
+     <tr>
+       <td>
+         <%= link_to post_path(post.id) do %>
+           <%= post.title %>
+         <% end %>
+         <%= post.body %>
+         <%= post.field_area(post.area) %>
+         コメント<%= post.comments.count %>件
+       </td>
+     </tr>
+   </table>
+  <% end %>
+</div>

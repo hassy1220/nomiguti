@@ -1,0 +1,29 @@
+<div>
+  <h1>Post Showページ</h1>
+  <table>
+    <tr>
+      <td><%= image_tag @post.user.get_profile_image(100,100) %></td>
+    </tr>
+    <tr>
+      <td><%= @post.title %></td>
+      <td><%= @post.body %></td>
+      <td><%= @post.field_area(@post.area) %></td>
+    </tr>
+  </table>
+</div>
+
+<div>
+  <h2>コメント</h2>
+  <% @post.comments.each do |comment| %>
+   <table>
+     <tr>
+       <td><%= image_tag comment.user.get_profile_image(50,50) %></td>
+       <td><%= comment.comment %></td>
+     </tr>
+   </table>
+  <% end %>
+  <%= form_with model: [@post,@post_comment] do |f| %>
+   <%= f.text_area :comment,rows:"5",placeholder:"ここにコメントを記入してください" %>
+   <%= f.submit"送信" %>
+  <% end %>
+</div>

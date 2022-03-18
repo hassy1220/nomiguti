@@ -1,0 +1,10 @@
+<h1>編集画面</h1>
+<%= form_with model: @user do |f| %>
+  <label for = "name">名前</label><br>
+  <%= f.text_field :name,placeholder:"ここに名前を",id:"name" %><br>
+  <label>画像</label><br>
+  <%= f.file_field :profile_image,assept:"image/jpg" %><br>
+  <label for = "introduction">自己紹介</label><br>
+  <%= f.text_area :introduction,placeholder:"自己紹介はここに",rows:"5" %><br>
+  <%= f.submit"変更" %><br>
+<% end %>

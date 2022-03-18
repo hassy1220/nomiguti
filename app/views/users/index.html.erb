@@ -1,0 +1,15 @@
+<div>
+  <h1>グチ投稿者一覧</h1>
+  <% @users.each do |user| %>
+   <table>
+     <tr>
+       <td>
+         <%= link_to user_path(user.id) do %>
+         　<%= image_tag user.get_profile_image(100,100) %>
+         <% end %>
+       <td>名前：<%= user.name %></td>
+       <td>自己紹介：<%= user.introduction %></td>
+     </tr>
+   </table>
+  <% end %>
+</div>
